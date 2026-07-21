@@ -264,12 +264,74 @@ transform:translateY(0);
 }
 
 }
+/* Glow */
+
+.glow{
+position:absolute;
+width:250px;
+height:250px;
+border-radius:50%;
+filter:blur(80px);
+opacity:.35;
+z-index:-1;
+animation:moveGlow 10s ease-in-out infinite alternate;
+}
+
+.glow1{
+background:#ff6fb3;
+top:-60px;
+left:-60px;
+}
+
+.glow2{
+background:#7db8ff;
+bottom:-60px;
+right:-60px;
+animation-delay:2s;
+}
+
+@keyframes moveGlow{
+
+from{
+transform:translate(0,0) scale(1);
+}
+
+to{
+transform:translate(40px,-40px) scale(1.3);
+}
+
+}
+
+/* Stars */
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite;
+opacity:.8;
+}
+
+@keyframes twinkle{
+
+0%,100%{
+opacity:.2;
+transform:scale(.8);
+}
+
+50%{
+opacity:1;
+transform:scale(1.3);
+}
+
+}
 </style>
 
 </head>
 
 <body>
-
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
 <div class="book">
 
 <div class="page fade">
@@ -367,7 +429,23 @@ heart.remove();
 }
 
 setInterval(createHeart,350);
+for(let i=0;i<50;i++){
 
+const star=document.createElement("div");
+
+star.className="star";
+
+star.style.width=(2+Math.random()*3)+"px";
+star.style.height=star.style.width;
+
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDelay=Math.random()*3+"s";
+
+document.body.appendChild(star);
+
+}
 </script>
 </body>
 </html>
