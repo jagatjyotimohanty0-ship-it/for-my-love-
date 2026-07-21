@@ -338,41 +338,7 @@ transform:scale(1.3);
 
 <h1 class="typing" id="typing"></h1>
 
-<p>
-
-Agar tum yaha tak aa gayi ho... ❤️
-
-<br><br>
-
-To shayad tum samajh hi gayi hogi...
-
-<br><br>
-
-Ye koi normal website nahi hai...
-
-<br><br>
-
-Ye meri feelings hain...
-
-<br><br>
-
-Jo words me bolna mushkil tha...
-
-<br><br>
-
-Isliye maine unhe is website me likh diya. ❤️
-
-<br><br>
-
-Ready ho?
-
-<br><br>
-
-Chalo...
-
-Hamari story dobara jeete hain.
-
-</p>
+<p id="introText"></p>
 
 <button id="startBtn">
 
@@ -383,7 +349,43 @@ Hamari story dobara jeete hain.
 </div>
 </div>
 <script>
+const introLines=[
 
+"Agar tum yaha tak aa gayi ho... ❤️",
+
+"",
+
+"To shayad tum samajh hi gayi hogi...",
+
+"",
+
+"Ye koi normal website nahi hai...",
+
+"",
+
+"Ye meri feelings hain...",
+
+"",
+
+"Jo words me bolna mushkil tha...",
+
+"",
+
+"Isliye maine unhe is website me likh diya. ❤️",
+
+"",
+
+"Ready ho?",
+
+"",
+
+"Chalo...",
+
+"",
+
+"Hamari story dobara jeete hain. ❤️"
+
+];
 const text="Hey Noor... ❤️";
 
 let i=0;
@@ -403,7 +405,23 @@ setTimeout(type,100);
 }
 
 type();
+let line=0;
 
+function showLines(){
+
+if(line<introLines.length){
+
+document.getElementById("introText").innerHTML+=introLines[line]+"<br>";
+
+line++;
+
+setTimeout(showLines,700);
+
+}
+
+}
+
+setTimeout(showLines,900);
 function createHeart(){
 
 const heart=document.createElement("div");
@@ -429,7 +447,14 @@ heart.remove();
 }
 
 setInterval(createHeart,350);
-for(let i=0;i<50;i++){
+document.getElementById("startBtn").onclick=function(){
+
+this.innerHTML="❤️ Loading Story... ❤️";
+
+this.style.transform="scale(.95)";
+
+};
+  for(let i=0;i<50;i++){
 
 const star=document.createElement("div");
 
