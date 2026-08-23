@@ -24,13 +24,16 @@ html,body{
 body{
     overflow:hidden;
     color:white;
+
     background:
     radial-gradient(circle at 20% 20%,#6d1b65 0%,transparent 35%),
     radial-gradient(circle at 80% 80%,#34206f 0%,transparent 40%),
     linear-gradient(135deg,#100018,#210026,#10001f);
 }
 
-/* FLOATING HEARTS */
+/* =========================
+   FLOATING HEARTS
+========================= */
 
 .bg-heart{
     position:fixed;
@@ -58,40 +61,9 @@ body{
     }
 }
 
-/* MUSIC BUTTON */
-
-.musicBtn{
-
-    position:fixed;
-    top:18px;
-    right:18px;
-
-    z-index:100;
-
-    border:1px solid rgba(255,255,255,.2);
-
-    background:rgba(255,255,255,.1);
-
-    backdrop-filter:blur(10px);
-
-    color:white;
-
-    padding:10px 16px;
-
-    border-radius:30px;
-
-    cursor:pointer;
-
-    font-size:13px;
-
-    transition:.3s;
-}
-
-.musicBtn:hover{
-    transform:scale(1.05);
-}
-
-/* PROGRESS */
+/* =========================
+   PROGRESS BAR
+========================= */
 
 .progressBox{
 
@@ -125,7 +97,38 @@ body{
     transition:width .8s ease;
 }
 
-/* SCREEN */
+/* =========================
+   MUSIC STATUS
+========================= */
+
+.musicStatus{
+
+    position:fixed;
+
+    top:17px;
+
+    right:17px;
+
+    z-index:100;
+
+    padding:9px 15px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    font-size:13px;
+
+    opacity:.8;
+}
+
+/* =========================
+   SCREENS
+========================= */
 
 .screen{
 
@@ -166,7 +169,9 @@ body{
     }
 }
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
 
 .card{
 
@@ -202,7 +207,9 @@ body{
     display:none;
 }
 
-/* TEXT */
+/* =========================
+   TEXT
+========================= */
 
 .mini{
 
@@ -257,7 +264,9 @@ p{
     color:#ffb8d9;
 }
 
-/* BUTTON */
+/* =========================
+   BUTTON
+========================= */
 
 .btn{
 
@@ -302,7 +311,9 @@ p{
     transform:scale(.97);
 }
 
-/* PHOTOS */
+/* =========================
+   PHOTOS
+========================= */
 
 .photos{
 
@@ -360,7 +371,9 @@ p{
     rotate(1deg);
 }
 
-/* REASONS */
+/* =========================
+   REASONS
+========================= */
 
 .reasons{
 
@@ -417,7 +430,9 @@ p{
     opacity:.8;
 }
 
-/* MEMORY CARDS */
+/* =========================
+   MEMORIES
+========================= */
 
 .memories{
 
@@ -457,7 +472,9 @@ p{
     opacity:.8;
 }
 
-/* QUESTION */
+/* =========================
+   QUESTION
+========================= */
 
 .question{
 
@@ -477,7 +494,9 @@ p{
     gap:15px;
 }
 
-/* TYPING */
+/* =========================
+   LETTER
+========================= */
 
 .letterBox{
 
@@ -503,7 +522,9 @@ p{
 
 }
 
-/* FINAL */
+/* =========================
+   FINAL
+========================= */
 
 .bigHeart{
 
@@ -536,7 +557,9 @@ p{
     font-style:italic;
 }
 
-/* PETALS */
+/* =========================
+   PETALS
+========================= */
 
 .petal{
 
@@ -563,7 +586,9 @@ p{
     }
 }
 
-/* SPARKLES */
+/* =========================
+   SPARKLES
+========================= */
 
 .spark{
 
@@ -585,6 +610,7 @@ p{
 
     100%{
         opacity:0;
+
         transform:
         translate(
             var(--x),
@@ -594,7 +620,9 @@ p{
     }
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
@@ -623,22 +651,21 @@ p{
 <body>
 
 
-<!-- PROGRESS BAR -->
+<!-- PROGRESS -->
 
 <div class="progressBox">
     <div class="progress" id="progress"></div>
 </div>
 
 
+<!-- MUSIC STATUS -->
+
+<div class="musicStatus" id="musicStatus">
+    🎵 Waiting for you...
+</div>
+
+
 <!-- MUSIC -->
-
-<button class="musicBtn"
-        onclick="toggleMusic()"
-        id="musicBtn">
-
-    🎵 Music
-
-</button>
 
 <audio id="music" loop>
     <source src="music.mp3" type="audio/mpeg">
@@ -647,11 +674,16 @@ p{
 
 <!-- =========================
      SCREEN 1
+     START + MUSIC
 ========================= -->
 
 <section class="screen active" id="s1">
 
     <div class="card">
+
+        <div style="font-size:65px;margin-bottom:10px;">
+            💗
+        </div>
 
         <div class="mini">
             A tiny surprise for you
@@ -685,12 +717,24 @@ p{
 
         </p>
 
+
         <button class="btn"
-                onclick="nextScreen(2)">
+                onclick="startSurprise()">
 
             Open Your Surprise 💗
 
         </button>
+
+
+        <p style="
+            font-size:12px;
+            opacity:.55;
+            margin-top:18px;
+        ">
+
+            🎵 Music will start with the surprise
+
+        </p>
 
     </div>
 
@@ -1115,8 +1159,10 @@ p{
             class="btn"
             id="letterButton"
             onclick="nextScreen(8)"
-            style="opacity:0;
-                   pointer-events:none;">
+            style="
+                opacity:0;
+                pointer-events:none;
+            ">
 
             One Last Thing... ❤️
 
@@ -1181,7 +1227,7 @@ p{
 
 
 <!-- =========================
-     SCREEN 9 FINAL
+     SCREEN 9
 ========================= -->
 
 <section class="screen" id="s9">
@@ -1247,11 +1293,53 @@ p{
 <script>
 
 /* =========================
-   SCREEN SYSTEM
+   VARIABLES
 ========================= */
 
 let currentScreen = 1;
 
+const music =
+    document.getElementById("music");
+
+const musicStatus =
+    document.getElementById("musicStatus");
+
+
+/* =========================
+   START SURPRISE
+   MUSIC + WEBSITE
+========================= */
+
+function startSurprise(){
+
+    /*
+       User clicked the button,
+       so browser allows music to play.
+    */
+
+    music.play()
+    .then(() => {
+
+        musicStatus.innerHTML =
+            "🎵 Playing for you ❤️";
+
+    })
+    .catch(() => {
+
+        musicStatus.innerHTML =
+            "🎵 Surprise started";
+
+    });
+
+
+    nextScreen(2);
+
+}
+
+
+/* =========================
+   SCREEN SYSTEM
+========================= */
 
 function nextScreen(number){
 
@@ -1319,7 +1407,6 @@ function answer(type){
         "ki tum actually kitni special ho, Baby.";
 
     }
-
 
     else{
 
@@ -1668,51 +1755,6 @@ function createSparkles(){
             },
             i * 40
         );
-
-    }
-
-}
-
-
-/* =========================
-   MUSIC
-========================= */
-
-const music =
-    document.getElementById("music");
-
-
-const musicBtn =
-    document.getElementById("musicBtn");
-
-
-function toggleMusic(){
-
-    if(music.paused){
-
-        music.play()
-        .then(() => {
-
-            musicBtn.innerHTML =
-                "🔊 Music On";
-
-        })
-        .catch(() => {
-
-            alert(
-                "Music file upload karna mat bhoolna Baby ❤️"
-            );
-
-        });
-
-    }
-
-    else{
-
-        music.pause();
-
-        musicBtn.innerHTML =
-            "🎵 Music";
 
     }
 
